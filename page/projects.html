@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Author: Korizu Yule | Created: 21 September 2026 -->
+
+  <!-- Makes the page fit phone, tablet and computer screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Projects - Korizu Yule</title>
+
+  <!-- Shared stylesheet. ../ goes up from /page to the main folder, then into /style -->
+  <link rel="stylesheet" href="../style/portfolio.css">
+</head>
+
+<body>
+
+  <!-- ===== HEADER: profile picture, name and page title ===== -->
+  <header>
+    <img src="../images/profile.jpg" alt="Professional photograph of Korizu Yule">
+    <p class="myname">Korizu Yule</p>
+    <p>My Projects</p>
+  </header>
+
+  <!-- ===== NAVIGATION MENU: same on every page (current page is highlighted) ===== -->
+  <nav>
+    <ul>
+        <li><a href="portfolio.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="hobbies.html">Hobbies</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== MAIN CONTENT: changes on each page ===== -->
+  <div id="main">
+    <h1>My Projects</h1>
+    <p>This page presents my web design and Information Technology projects.</p>
+
+    <!-- Project cards: 3 across on computer, 2 on tablet, 1 on phone -->
+    <div class="project-grid">
+
+      <!-- Project 1 (with write-up PDF from the /documents folder) -->
+      <section class="project-card">
+        <h2>Project 1: Personal Portfolio Website</h2>
+        <p>This portfolio website is my first project. It demonstrates my use of HTML and CSS to create a multi-page personal website.</p>
+        <p>
+          <a class="button" href="../documents/WEB-Design-Write-up.pdf" target="_blank">View Project Write-Up PDF</a>
+          <a class="button" href="../documents/WEB-Design-Write-up.pdf" download>Download Project Write-Up PDF</a>
+        </p>
+      </section>
+
+      <!-- Project 2 -->
+      <section class="project-card">
+        <h2>Project 2: Web Design Project</h2>
+        <p>This project focuses on applying web design principles, page structure, navigation, images and styling.</p>
+      </section>
+
+      <!-- Project 3 -->
+      <section class="project-card">
+        <h2>Project 3: Future Projects</h2>
+        <p>I plan to continue developing projects that improve my web design and Information Technology skills.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>&copy; 2026 Korizu Yule. All rights reserved.</p>
+    <p><a href="contact.html">Contact Me</a></p>
+  </footer>
+
+</body>
+</html>
