@@ -1,0 +1,486 @@
+/* ==========================================================================
+   KORIZU YULE - PERSONAL PORTFOLIO
+   Stylesheet: style/portfolio.css
+   Used by every page in the /page folder.
+
+   CONTENTS
+   1.  Colour variables
+   2.  Base / reset
+   3.  Page background
+   4.  Layout containers (header, nav, main, footer)
+   5.  Header
+   6.  Navigation menu
+   7.  Main content area and headings
+   8.  Links and buttons
+   9.  Profile photo (About page)
+   10. Hobby and project cards
+   11. Education table
+   12. Contact form
+   13. Footer
+   14. Accessibility (keyboard focus)
+   15. Tablet layout  (up to 900px wide)
+   16. Phone layout   (up to 600px wide)
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. COLOUR VARIABLES
+   Change a colour here and it updates across the whole website.
+   -------------------------------------------------------------------------- */
+:root {
+  --maroon: #70263d;          /* main brand colour */
+  --maroon-dark: #4b1b2a;     /* hover colour for buttons */
+  --pink-light: #f8edf1;      /* card and table-row background */
+  --pink-hover: #d8a8b8;      /* navigation hover colour */
+  --white-panel: rgba(255, 255, 255, 0.94); /* see-through white panels */
+  --maroon-panel: rgba(112, 38, 61, 0.95);  /* see-through maroon panels */
+  --text: #333333;            /* body text colour */
+}
+
+
+/* --------------------------------------------------------------------------
+   2. BASE / RESET
+   -------------------------------------------------------------------------- */
+
+/* Makes width and height include padding and border, so boxes never overflow */
+* {
+  box-sizing: border-box;
+}
+
+/* Smooth scrolling when jumping to a section of a page */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Calibri, sans-serif;
+  font-size: 1rem;            /* 16px - readable on phones */
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Images never grow wider than their container (important for phones) */
+img {
+  max-width: 100%;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. PAGE BACKGROUND
+   A pink-maroon tint is laid over the photo so the text panels stand out.
+   -------------------------------------------------------------------------- */
+body {
+  /* Fallback colour shown while the image loads */
+  background-color: #ead6dc;
+
+  /* Tint on top, photo underneath. ../images/ goes up from /style to /images */
+  background-image:
+    linear-gradient(rgba(112, 38, 61, 0.30), rgba(112, 38, 61, 0.30)),
+    url("../images/portfolio-background.jpg");
+
+  background-size: cover;          /* photo fills the whole screen */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;    /* photo stays still while scrolling (desktop) */
+}
+
+/* The Hobbies page uses its own background photo (body class="hobbies-page") */
+body.hobbies-page {
+  background-image:
+    linear-gradient(rgba(112, 38, 61, 0.30), rgba(112, 38, 61, 0.30)),
+    url("../images/hobbies-background.jpg");
+}
+
+
+/* --------------------------------------------------------------------------
+   4. LAYOUT CONTAINERS
+   Header, menu, main content and footer share the same centred width.
+   -------------------------------------------------------------------------- */
+header,
+nav,
+#main,
+footer {
+  width: 94%;                 /* leaves a small gap either side on phones */
+  max-width: 1100px;          /* never wider than this on big screens */
+  margin-left: auto;          /* auto margins centre the block */
+  margin-right: auto;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. HEADER (profile picture, name and page title)
+   -------------------------------------------------------------------------- */
+header {
+  margin-top: 25px;
+  padding: 20px 3%;
+  background: var(--white-panel);
+  border: 2px solid #000;
+  border-radius: 25px;
+  overflow: hidden;           /* contains the floated picture */
+}
+
+/* Small profile picture floats to the left of the name */
+header img {
+  float: left;
+  width: 150px;
+  height: 180px;
+  object-fit: cover;          /* crops the photo instead of squashing it */
+  object-position: top;       /* keeps the face in view when cropped */
+  margin-right: 3%;
+  margin-bottom: 2%;
+  border: 2px solid var(--maroon);
+  border-radius: 20px;
+}
+
+/* Your name in the header */
+.myname {
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--maroon);
+  margin: 25px 0 5px;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. NAVIGATION MENU
+   -------------------------------------------------------------------------- */
+nav {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px 3%;
+  background: var(--maroon-panel);
+  border-radius: 15px;
+}
+
+/* Remove bullet points and centre the menu items */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Menu items sit side by side */
+nav li {
+  display: inline-block;
+  margin: 5px 4px;
+}
+
+nav a {
+  display: inline-block;
+  padding: 10px 14px;         /* big enough to tap with a finger */
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+/* Hover (mouse) and focus (keyboard) colour */
+nav a:hover,
+nav a:focus {
+  background: var(--pink-hover);
+  color: var(--maroon-dark);
+}
+
+/* Highlights the page you are currently on (aria-current="page" in the HTML) */
+nav a[aria-current="page"] {
+  background: #ffffff;
+  color: var(--maroon);
+}
+
+
+/* --------------------------------------------------------------------------
+   7. MAIN CONTENT AREA AND HEADINGS
+   -------------------------------------------------------------------------- */
+#main {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 3%;
+  background: var(--white-panel);
+  border: 2px solid #000;
+  border-radius: 25px;
+  overflow: hidden;
+  clear: both;                /* sits below the floated header picture */
+}
+
+h1,
+h2,
+h3 {
+  color: var(--maroon);
+}
+
+/* Page title */
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+}
+
+/* Section headings get a maroon underline */
+h2 {
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--maroon);
+}
+
+
+/* --------------------------------------------------------------------------
+   8. LINKS AND BUTTONS
+   -------------------------------------------------------------------------- */
+a {
+  color: var(--maroon);
+}
+
+/* .button is used on <button> and links; .button-link on links only */
+.button,
+.button-link {
+  display: inline-block;
+  margin: 5px 5px 5px 0;
+  padding: 12px 18px;         /* at least 44px tall for easy tapping */
+  background: var(--maroon);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button:hover,
+.button-link:hover {
+  background: var(--maroon-dark);
+}
+
+
+/* --------------------------------------------------------------------------
+   9. PROFILE PHOTO (About page)
+   -------------------------------------------------------------------------- */
+.profile-photo {
+  display: block;             /* lets the photo be centred */
+  width: 260px;
+  max-width: 100%;            /* shrinks on small screens */
+  height: auto;
+  margin: 10px auto 2%;
+  border: 2px solid var(--maroon);
+  border-radius: 20px;
+}
+
+
+/* --------------------------------------------------------------------------
+   10. HOBBY AND PROJECT CARDS
+   Three cards side by side on a computer (see sections 15-16 for tablets
+   and phones).
+   -------------------------------------------------------------------------- */
+.hobby-grid,
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   /* 3 equal columns */
+  gap: 20px;
+}
+
+.hobby-card,
+.project-card {
+  padding: 18px;
+  background: var(--pink-light);
+  border: 2px solid var(--maroon);
+  border-radius: 15px;
+  text-align: center;
+}
+
+/* Card pictures all have the same height and are cropped to fit */
+.hobby-card img,
+.project-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  margin-bottom: 2%;
+  border-radius: 12px;
+}
+
+
+/* --------------------------------------------------------------------------
+   11. EDUCATION TABLE
+   .table-wrap lets the table scroll sideways on a narrow phone screen
+   instead of breaking the page layout.
+   -------------------------------------------------------------------------- */
+.table-wrap {
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.education-table {
+  width: 100%;
+  border-collapse: collapse;  /* joins the cell borders into single lines */
+  background: #ffffff;
+}
+
+.education-table th,
+.education-table td {
+  padding: 12px;
+  text-align: left;
+  vertical-align: top;
+  border: 2px solid var(--maroon);
+}
+
+/* Maroon heading row */
+.education-table th {
+  background: var(--maroon);
+  color: #ffffff;
+}
+
+/* Every second row is light pink so rows are easy to follow */
+.education-table tr:nth-child(even) {
+  background: var(--pink-light);
+}
+
+
+/* --------------------------------------------------------------------------
+   12. CONTACT FORM
+   -------------------------------------------------------------------------- */
+form {
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+/* Label above each box */
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+  color: var(--maroon);
+}
+
+input,
+textarea {
+  width: 100%;
+  margin-top: 5px;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 1rem;            /* 16px stops iPhones zooming in when typing */
+  border: 2px solid var(--maroon);
+  border-radius: 8px;
+}
+
+/* Message box: tall, and can only be stretched up and down */
+textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+
+/* --------------------------------------------------------------------------
+   13. FOOTER
+   -------------------------------------------------------------------------- */
+footer {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  padding: 20px 3%;
+  background: var(--maroon-panel);
+  color: #ffffff;
+  text-align: center;
+  border-radius: 15px;
+}
+
+footer a {
+  color: #ffffff;
+}
+
+
+/* --------------------------------------------------------------------------
+   14. ACCESSIBILITY
+   A clear outline shows where you are when using the Tab key.
+   -------------------------------------------------------------------------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #e0a000;
+  outline-offset: 2px;
+}
+
+
+/* --------------------------------------------------------------------------
+   15. TABLET LAYOUT (screens up to 900px wide)
+   Cards change from 3 columns to 2.
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+
+  .hobby-grid,
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Fixed backgrounds are unreliable on tablets and phones, so scroll normally */
+  body {
+    background-attachment: scroll;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   16. PHONE LAYOUT (screens up to 600px wide)
+   Everything stacks in a single column.
+   -------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+
+  /* One card per row */
+  .hobby-grid,
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Header: picture moves above the name and everything is centred */
+  header {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  header img {
+    float: none;
+    display: block;
+    margin: 0 auto 10px;
+  }
+
+  .myname {
+    margin-top: 10px;
+    font-size: 1.7rem;
+  }
+
+  /* Menu: two buttons per row instead of one long list */
+  nav li {
+    display: inline-block;
+    width: 48%;
+    margin: 4px 0;
+  }
+
+  nav a {
+    display: block;           /* whole box is tappable */
+    padding: 12px 6px;
+  }
+
+  /* Less padding so text has more room */
+  #main {
+    padding: 5%;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  /* Buttons fill the width so they are easy to tap */
+  .button,
+  .button-link {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+    text-align: center;
+  }
+
+  /* Smaller table text so more fits on screen */
+  .education-table th,
+  .education-table td {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}
